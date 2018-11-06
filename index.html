@@ -24,13 +24,11 @@ var map = new mapboxgl.Map({
     bearing: -17.6,
     container: 'map'
 });
-
 // The 'building' layer in the mapbox-streets vector source contains building-height
 // data from OpenStreetMap.
 map.on('load', function() {
     // Insert the layer beneath any symbol layer.
     var layers = map.getStyle().layers;
-
     var labelLayerId;
     for (var i = 0; i < layers.length; i++) {
         if (layers[i].type === 'symbol' && layers[i].layout['text-field']) {
@@ -38,7 +36,6 @@ map.on('load', function() {
             break;
         }
     }
-
     map.addLayer({
         'id': '3d-buildings',
         'source': 'composite',
@@ -48,7 +45,6 @@ map.on('load', function() {
         'minzoom': 15,
         'paint': {
             'fill-extrusion-color': '#aaa',
-
             // use an 'interpolate' expression to add a smooth transition effect to the
             // buildings as the user zooms in
             'fill-extrusion-height': [
@@ -65,11 +61,7 @@ map.on('load', function() {
         }
     }, labelLayerId);
 });
-
-
-
 map.on('load', function() {
-
     map.addLayer({
         "id": "data",
         "type": "fill-extrusion",
@@ -95,10 +87,8 @@ map.on('load', function() {
                 },
                  'fill-extrusion-opacity': 1
             }
-
     });
 });
-
 </script>
 
 </body>
