@@ -1,95 +1,248 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset='utf-8' />
-    <title>Display buildings in 3D</title>
-    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.49.0/mapbox-gl.js'></script>
-    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.49.0/mapbox-gl.css' rel='stylesheet' />
-    <style>
-        body { margin:0; padding:0; }
-        #map { position:absolute; top:0; bottom:0; width:100%; }
-    </style>
-</head>
-<body>
+<!doctype html>
+<html lang="en">
 
-<div id='map'></div>
-<script>
-mapboxgl.accessToken = '<your access token here>';
-var map = new mapboxgl.Map({
-    style: 'mapbox://styles/mapbox/light-v9',
-    center: [-74.0066, 40.7135],
-    zoom: 15.5,
-    pitch: 45,
-    bearing: -17.6,
-    container: 'map'
-});
-// The 'building' layer in the mapbox-streets vector source contains building-height
-// data from OpenStreetMap.
-map.on('load', function() {
-    // Insert the layer beneath any symbol layer.
-    var layers = map.getStyle().layers;
-    var labelLayerId;
-    for (var i = 0; i < layers.length; i++) {
-        if (layers[i].type === 'symbol' && layers[i].layout['text-field']) {
-            labelLayerId = layers[i].id;
-            break;
-        }
-    }
-    map.addLayer({
-        'id': '3d-buildings',
-        'source': 'composite',
-        'source-layer': 'building',
-        'filter': ['==', 'extrude', 'true'],
-        'type': 'fill-extrusion',
-        'minzoom': 15,
-        'paint': {
-            'fill-extrusion-color': '#aaa',
-            // use an 'interpolate' expression to add a smooth transition effect to the
-            // buildings as the user zooms in
-            'fill-extrusion-height': [
-                "interpolate", ["linear"], ["zoom"],
-                15, 0,
-                15.05, ["get", "height"]
-            ],
-            'fill-extrusion-base': [
-                "interpolate", ["linear"], ["zoom"],
-                15, 0,
-                15.05, ["get", "min_height"]
-            ],
-            'fill-extrusion-opacity': .6
-        }
-    }, labelLayerId);
-});
-map.on('load', function() {
-    map.addLayer({
-        "id": "data",
-        "type": "fill-extrusion",
-        "source": {
-            'type': 'geojson',
-            'data': './nameoffile.geojson'
-        },
-        'layout': {
-            'visibility': 'visible'
-            },
-        'paint': {
-                'fill-extrusion-color' : {
-                    'property': 'colour',
-                    'type': 'identity'
-                },
-                'fill-extrusion-height' : {
-                    'type': 'identity',
-                    'property': 'height'
-                },
-                'fill-extrusion-base' : {
-                    'type': 'identity',
-                    'property': 'base_height'
-                },
-                 'fill-extrusion-opacity': 1
-            }
-    });
-});
-</script>
+	<head>
+		<meta charset="utf-8">
 
-</body>
+		<title>reveal.js – The HTML Presentation Framework</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="/static/lecture/reveal.css">
+		<link rel="stylesheet" href="/static/lecture/black.css" id="theme">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	<style type="text/css">
+		.contain{
+			background-size: contain !important;
+		}
+	</style>
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				
+<section>
+<img src="slide1.jpg">
+</section>
+                
+<section>
+<h2>k</h2>
+</section>
+                
+<section>
+<img src>
+</section>
+                
+<section>
+<h1>CLIENTS</h1>
+</section>
+<section>
+<h2>DIRECTOR</h2>
+<b>Cinema Library</b><br>
+100m2 surface area of storage
+</section>
+                
+<section>
+<h2>WRITER</h2>
+<b>Writing Study</b>
+16-25m2 of changeable internal space<br>
+16-25m2 of adjacent external space
+</section>
+                
+<section>
+<h2>PRACTICAL EFFECTS CREATOR</h2>
+<b>Studio</b>
+35-50m2 of open changable space 2-3 storeys high
+</section>
+                
+<section>
+<iframe width="1120" height="630" src="https://www.youtube.com/embed/SWjRUu7DPkU" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+</section>
+                
+<section>
+<iframe width="1120" height="630" src="https://www.youtube.com/embed/JncuykDwT8A" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+</section>
+                
+<section>
+	<iframe width="1120" height="630" src="https://www.youtube.com/embed/3N4m3SmBlAg" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+</section>
+
+<!-- <section class="contain" data-background="http://www.cgarchitect.com/content/portfolioitems/2017/05/137264/5930_tetrashed_nationalpark_exterior_17_reflection_large.jpg"></section> -->
+			</div>
+
+		</div>
+
+		<script src="/static/lecture/head.min.js"></script>
+		<script src="/static/lecture/reveal.js"></script>
+
+		<script>
+
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'fade', // none/fade/slide/convex/concave/zoom
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/search/search.js', async: true },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+		<!-- Everything below this point is only used for the reveal.js demo page -->
+
+
+		<style>
+			/* Social sharing */
+			.share-reveal a {
+				display: inline-block;
+				height: 34px;
+				line-height: 32px;
+				padding: 0 10px;
+				color: #fff;
+				font-family: Helvetica, sans-serif;
+				text-decoration: none;
+				font-weight: bold;
+				font-size: 12px;
+				vertical-align: top;
+				text-transform: uppercase;
+				box-sizing: border-box;
+			}
+
+			.share-reveal .share-reveal-editor {
+				line-height: 30px;
+			}
+
+			.share-reveal svg {
+				vertical-align: middle;
+			}
+
+			.share-reveal a + a {
+				margin-left: 10px;
+			}
+
+			.share-reveal-editor {
+				border: 2px solid #fff;
+			}
+
+			.share-reveal-twitter,
+			.share-reveal-follow {
+				background-color: #00aced;
+			}
+
+			.share-reveal-facebook {
+				background-color: #4B71B8;
+			}
+
+			/* Advertising */
+			#carbonads {
+				width: 370px;
+				min-height: 100px;
+				font-size: 18px;
+				border: 1px solid rgba(255, 255, 255, 0.2);
+				padding: 10px;
+
+				margin: 40px auto 0 auto;
+				font-size: 16px;
+				z-index: 10;
+				text-align: left;
+			}
+
+			#carbonads .carbon-img img {
+				float: left;
+				margin: 0 10px 0 0;
+				border: 0;
+				box-shadow: none;
+			}
+
+			#carbonads .carbon-poweredby {
+				display: block;
+				margin-top: 10px;
+				color: #aaa;
+			}
+		</style>
+
+		<script>
+		var _gaq = [['_setAccount', 'UA-15240703-1'], ['_trackPageview']];
+		(function(d, t) {
+		var g = d.createElement(t),
+			s = d.getElementsByTagName(t)[0];
+		g.async = true;
+		g.src = ('https:' == location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		s.parentNode.insertBefore(g, s);
+		})(document, 'script');
+		</script>
+
+		<script>
+			[].slice.call( document.querySelectorAll( '.share-reveal-facebook, .share-reveal-twitter' ) ).forEach( function( element ) {
+				element.addEventListener( 'click', function( event ) {
+					event.preventDefault();
+					var width = 500, height = 300;
+					var winTop = window.screenY + (window.screen.height / 2) - (height / 2);
+					var winLeft = window.screenX + (window.screen.width / 2) - (width / 2);
+					window.open(this.href, 'shre', 'top=' + winTop + ',left=' + winLeft + ',toolbar=0,status=0,width=' + width + ',height=' + height);
+				} );
+			} );
+
+			if( !navigator.userAgent.match( /(iphone|android)/gi ) && !!document.querySelector ) {
+				document.querySelector( '.share-reveal' ).style.display = 'block';
+				document.querySelector( '.fork-reveal' ).style.display = 'block';
+			}
+		</script>
+
+	</body>
 </html>
+
+<!--
+
+https://www.dezeen.com/2016/01/08/video-interview-virginia-lung-one-plus-partnership-exploded-cinema-movie/
+https://www.dezeen.com/2014/04/29/kineforum-misbar-open-air-cinema-in-jakarta-by-csutoras-liando/
+https://www.dezeen.com/2013/01/25/cinema-32-by-encore-heureux/
+https://www.dezeen.com/2012/10/23/centipede-cinema-by-colin-fournier-marysia-lewandowska-and-neon/
+https://www.dezeen.com/2012/05/28/cineteca-matadero-by-churtichagaquadra-salcedo/
+https://www.dezeen.com/2012/06/25/stairway-cinema-by-oh-no-sumo/
+https://www.dezeen.com/2014/11/30/movie-cine-times-cinema-hong-kong-black-white-one-plus-partnership-video-interview/
+
+
+
+
+
+
+http://dougandwolf.com/wordtest/
+ -->
