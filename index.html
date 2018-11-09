@@ -209,48 +209,7 @@ img {
 <body>
 
 <div id='map'></div>
-      <a href="https://monicaooi.github.io/test3/">Mapbox+Models</a>
-<script>
-mapboxgl.accessToken = 'pk.eyJ1IjoiY3J1c2gxMTAyIiwiYSI6ImNqYWZhMGttdTEyNmkzMnJ6c3FkaWRzdWgifQ.4D2wtlo2xcG5txDWnv1jCQ';
-var map = new mapboxgl.Map({
-    style: 'mapbox://styles/mapbox/light-v9',
-    center: [151.225175, -33.871021],
-    zoom: 12,
-    pitch: 45,
-    bearing: -17.6,
-    container: 'map'
-});
-map.on('load', function() {
-    map.addLayer({
-        "id": "data",
-        "type": "fill-extrusion",
-        "source": {
-            'type': 'geojson',
-            'data': './nameoffile.geojson'
-        },
-        'layout': {
-            'visibility': 'visible'
-            },
-        'paint': {
-                'fill-extrusion-color' : {
-                    'property': 'color',
-                    'type': 'identity'
-                },
-                'fill-extrusion-height' : {
-                    'type': 'identity',
-                    'property': 'height'
-                },
-                'fill-extrusion-base' : {
-                    'type': 'identity',
-                    'property': 'base_height'
-                },
-                 'fill-extrusion-opacity': 1
-            }
-    });
-});
-</script>
-
-</body>
+   <a href="https://monicaooi.github.io/test3/">Mapbox+Models</a>
 </div>      
 
 <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
